@@ -8,26 +8,26 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 // --- MOCK DATA, AVATARS & TYPES ---
 
-// New, diverse avatar sets
+// New, diverse avatar sets using UI Avatars service
 const NEW_MALE_AVATARS = [
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/01.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/02.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/03.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/04.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/05.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/06.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/07.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/08.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/09.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/10.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/11.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/12.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/13.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/14.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/male/15.png'
+    'https://ui-avatars.com/api/?name=Alex&background=4F46E5&color=fff&size=100', 'https://ui-avatars.com/api/?name=Ben&background=7C3AED&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Chris&background=DC2626&color=fff&size=100', 'https://ui-avatars.com/api/?name=David&background=059669&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Ethan&background=EA580C&color=fff&size=100', 'https://ui-avatars.com/api/?name=Finn&background=BE185D&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Gabe&background=0891B2&color=fff&size=100', 'https://ui-avatars.com/api/?name=Hugo&background=7C2D12&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Ivan&background=1E40AF&color=fff&size=100', 'https://ui-avatars.com/api/?name=Jake&background=7C3AED&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Kyle&background=DC2626&color=fff&size=100', 'https://ui-avatars.com/api/?name=Luke&background=059669&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Mike&background=EA580C&color=fff&size=100', 'https://ui-avatars.com/api/?name=Noah&background=BE185D&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Owen&background=0891B2&color=fff&size=100'
 ];
 const NEW_FEMALE_AVATARS = [
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/01.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/02.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/03.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/04.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/05.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/06.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/07.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/08.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/09.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/10.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/11.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/12.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/13.png', 'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/14.png',
-    'https://storage.googleapis.com/aai-web-samples/apps/peer-chat/new-avatars/female/15.png'
+    'https://ui-avatars.com/api/?name=Anna&background=EC4899&color=fff&size=100', 'https://ui-avatars.com/api/?name=Bella&background=8B5CF6&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Clara&background=EF4444&color=fff&size=100', 'https://ui-avatars.com/api/?name=Diana&background=10B981&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Emma&background=F59E0B&color=fff&size=100', 'https://ui-avatars.com/api/?name=Fiona&background=EC4899&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Grace&background=8B5CF6&color=fff&size=100', 'https://ui-avatars.com/api/?name=Hannah&background=EF4444&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Iris&background=10B981&color=fff&size=100', 'https://ui-avatars.com/api/?name=Julia&background=F59E0B&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Kate&background=EC4899&color=fff&size=100', 'https://ui-avatars.com/api/?name=Luna&background=8B5CF6&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Maya&background=EF4444&color=fff&size=100', 'https://ui-avatars.com/api/?name=Nina&background=10B981&color=fff&size=100',
+    'https://ui-avatars.com/api/?name=Olivia&background=F59E0B&color=fff&size=100'
 ];
 
 const getRandomAvatar = (gender: 'male' | 'female') => {
@@ -73,13 +73,13 @@ interface JournalEntry {
 const mockInitialUser: User = {
     uid: '12345',
     displayName: 'Sarah',
-    avatar: 'https://storage.googleapis.com/aai-web-samples/apps/bare-souls/avatars/sarah.png',
+    avatar: 'https://ui-avatars.com/api/?name=Sarah&background=EC4899&color=fff&size=100',
     gender: 'female',
 };
 
 const AI_USER_ID = 'wellness-guide-ai';
 const mockBuddies: Buddy[] = [
-    { id: 'buddy-ai', userId: AI_USER_ID, userDisplayName: 'Wellness Guide', avatar: 'https://storage.googleapis.com/aai-web-samples/apps/bare-souls/avatars/wellness-guide.png', gender: 'ai', lastMessage: 'Would you like to try some grounding...', online: true, lastMessageTime: '2:35 PM' },
+    { id: 'buddy-ai', userId: AI_USER_ID, userDisplayName: 'Wellness Guide', avatar: 'https://ui-avatars.com/api/?name=WG&background=8B5CF6&color=fff&size=100', gender: 'ai', lastMessage: 'Would you like to try some grounding...', online: true, lastMessageTime: '2:35 PM' },
     { id: 'buddy-2', userId: 'delhi28', userDisplayName: 'delhi28', avatar: getRandomAvatar('female'), gender: 'female', lastMessage: 'That sounds like a great plan.', online: false, lastMessageTime: 'Yesterday' },
 ];
 
