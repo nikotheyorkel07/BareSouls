@@ -86,7 +86,7 @@ body.dark {
   background: var(--bg-color);
   border-radius: 30px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 0 0 8px rgba(255, 255, 255, 0.5);
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 .container.dark {
@@ -99,6 +99,7 @@ body.dark {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 /* ------------------- */
@@ -153,13 +154,28 @@ body.dark {
 main {
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
-main::-webkit-scrollbar { display: none; }
+main::-webkit-scrollbar { 
+  width: 4px;
+}
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+main::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+main::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
 
 section {
   padding-bottom: 90px;
+  min-height: calc(100vh - 90px);
 }
 .view-container {
   padding: 20px;
@@ -402,8 +418,10 @@ input[type="range"]::-webkit-slider-thumb {
     gap: 16px;
     max-height: 40vh; /* Set a max height */
     overflow-y: auto;
+    overflow-x: hidden;
     padding-right: 10px; /* For scrollbar spacing */
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 .journal-history::-webkit-scrollbar {
@@ -614,7 +632,28 @@ body.light .chat-view-header {
 .chat-header-actions .icon-btn-lg { background: var(--secondary-btn-bg); }
 .chat-header-actions .icon-btn-lg svg { fill: var(--text-secondary); }
 
-.chat-messages { flex-grow: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth; }
+.chat-messages { 
+  flex-grow: 1; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  padding: 20px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  scroll-behavior: smooth; 
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 200px);
+}
+.chat-messages::-webkit-scrollbar { 
+  width: 4px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
 .message-bubble-wrapper { display: flex; max-width: 80%; gap: 8px; }
 .message-bubble-wrapper.sent { align-self: flex-end; }
 .message-bubble-wrapper.received { align-self: flex-start; }
@@ -746,7 +785,9 @@ body.light .chat-form input { background-color: white; }
     gap: 15px;
     max-height: 40vh;
     overflow-y: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 .avatar-grid-item {
     background: none;
